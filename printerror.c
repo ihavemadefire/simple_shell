@@ -15,4 +15,5 @@ void printerror(char **args)
 		i++;
 	}
 	printf("No such file or directory\n");
+	_exit(1);
 }
