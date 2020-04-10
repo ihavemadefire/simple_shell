@@ -10,7 +10,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-
 void printerror(char **args);
 
 void printline(void);
