@@ -19,6 +19,11 @@ int main(int argc, char **argv, char **envp)
 	while (read_parse_line(args, line))
 	{
 		pid = fork();
+		if (pid < 0)
+		{
+			perror("FORK FAILED");
+			exit(1);
+		}
 		if (pid == 0)
 		{
 			ret = execvp(args[0], args);
