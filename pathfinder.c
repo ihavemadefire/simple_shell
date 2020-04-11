@@ -5,13 +5,14 @@ char *pathfinder(char *command, char **envp)
 	char *path = NULL;
 	char *path2 = NULL;
 	char *filename;
+	char *pass;
 	char *cmd = "/";
 	char *token = " ";
+	char *com;
 	int i = 0;
 	int j;
-	int k;
+	unsigned int k;
 
-	strcat(cmd, command);
 	while (envp[i] != NULL)
 	{
 		if (envp[i][0] == 'P' && envp[i][1]== 'A')
@@ -27,8 +28,10 @@ char *pathfinder(char *command, char **envp)
 			{
 				strcpy(filename, token);
 				strcat(filename, cmd);
+				strcat(filename, command);
 				if( access( filename, F_OK ) != -1 )
 				{
+					printf("%s\n", filename);
 					k = strlen(filename);
 					filename = malloc((k) * sizeof(char));
 					if (filename == NULL)

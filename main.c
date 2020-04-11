@@ -11,6 +11,7 @@ int main(int argc, char **argv, char **envp)
 {
 	char *args[10];
 	char line[100];
+	char *cmd;
 	pid_t pid;
 	int ret = 0;
 
@@ -19,7 +20,7 @@ int main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		read_parse_line(args, line);
-		args[0] = pathfinder(args[0], envp);
+		cmd = pathfinder(args[0], envp);
 		pid = fork();
 		if (pid < 0)
 		{
@@ -36,6 +37,7 @@ int main(int argc, char **argv, char **envp)
 		{
 			waitpid(pid, 0, 0);
 		}
+		free(cmd);
 	}
 	return (0);
 }
