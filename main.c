@@ -11,8 +11,6 @@ int main(int argc, char **argv, char **envp)
 {
 	char *args[10];
 	char line[100];
-	char *PATH = getenv("PATH");
-	char *env_args[2] = {PATH, NULL};
 	pid_t pid;
 	int ret = 0;
 
@@ -21,6 +19,7 @@ int main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		read_parse_line(args, line);
+		args[0] = pathfinder(args[0], envp);
 		pid = fork();
 		if (pid < 0)
 		{
@@ -29,7 +28,7 @@ int main(int argc, char **argv, char **envp)
 		}
 		if (pid == 0)
 		{
-			ret = execve(args[0], args, env_args);
+			ret = execve(args[0], args, envp);
 			if (ret != 0)
 				printerror(args);
 		}

@@ -22,5 +22,8 @@ void remove_endOfLine(char line[]);
 
 int process_line(char *args[], char line[]);
 
+char *pathfinder(char *command, char **envp);
+
+
 
 #endif
