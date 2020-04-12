@@ -9,7 +9,6 @@
  */
 int main(int argc, char **argv, char **envp)
 {
-	char *args[10], line[10], *finalpatharg;
 	pid_t pid;
 	int ex = 1, isat;
 

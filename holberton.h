@@ -12,6 +12,7 @@
 #include <limits.h>
 #include <sys/stat.h>
 
+<<<<<<< HEAD
 char *get_stat(char *pathargs[], char *args[]);
 
 int set_stat(char arguments[]);
@@ -37,6 +38,7 @@ int read_parse_line(char *args[], char line[], int isat);
 void remove_endOfLine(char line[]);
 
 int process_line(char *args[], char line[]);
+
 
 
 #endif
