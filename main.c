@@ -11,7 +11,8 @@ int main(int argc, char **argv, char **envp)
 {
 	char *args[10];
 	char line[100];
-	char *cmd;
+	char *cmd = NULL;
+	char *tmp = NULL;
 	pid_t pid;
 	int ret = 0;
 
@@ -21,6 +22,7 @@ int main(int argc, char **argv, char **envp)
 	{
 		read_parse_line(args, line);
 		cmd = pathfinder(args[0], envp);
+		printf("%s\n", cmd);
 		pid = fork();
 		if (pid < 0)
 		{

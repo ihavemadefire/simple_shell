@@ -5,7 +5,7 @@ char *pathfinder(char *command, char **envp)
 	char *path = NULL;
 	char *path2 = NULL;
 	char *filename;
-	char *pass;
+	char *pass = NULL;
 	char *cmd = "/";
 	char *token = " ";
 	char *com;
@@ -31,12 +31,13 @@ char *pathfinder(char *command, char **envp)
 				strcat(filename, command);
 				if( access( filename, F_OK ) != -1 )
 				{
-					printf("%s\n", filename);
 					k = strlen(filename);
-					filename = malloc((k) * sizeof(char));
-					if (filename == NULL)
+					pass = malloc((k+1) * sizeof(char));
+					if (pass == NULL)
 						return (NULL);
-					return(filename);
+					for (j = 0; j < k; j++)
+						pass[j] = filename[j];
+					return(pass);
 				}
 				token = strtok(NULL, ":");
 			}
