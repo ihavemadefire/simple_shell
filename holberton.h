@@ -12,7 +12,7 @@
 #include <limits.h>
 #include <sys/stat.h>
 
-<<<<<<< HEAD
+
 char *get_stat(char *pathargs[], char *args[]);
 
 int set_stat(char arguments[]);
