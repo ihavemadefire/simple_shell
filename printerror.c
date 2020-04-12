@@ -2,18 +2,32 @@
 /**
  * printerror - prints errors
  * @args: arguments from command line
+ * @argv: used for command typed in outside shell
+ * @isat: tells whether we are in the shell or outside
  *
  * Return: void
  */
-void printerror(char **args)
+void printerror(char **args, char **argv, int isat)
 {
 	int i = 0;
 
-	while (args[i])
+	if (isat == 1)
 	{
-		printf("%s: ", args[i]);
-		i++;
+		while (args[i])
+		{
+			printf("%s: ", args[i]);
+			i++;
+		}
+		printf("No such file or directory\n");
 	}
-	printf("No such file or directory\n");
-	_exit(1);
+	else
+	{
+		printf("%s: 1: ", argv[0]);
+		while (args[i])
+		{
+			printf("%s: ", args[i]);
+			i++;
+		}
+		printf("not found\n");
+	}
 }

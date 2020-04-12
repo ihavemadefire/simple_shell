@@ -9,31 +9,36 @@
  */
 int main(int argc, char **argv, char **envp)
 {
-	char *args[10];
-	char line[100];
+	char *args[10], line[10], *finalpatharg;
 	pid_t pid;
-	int ret = 0;
+	int ex = 1, isat;
 
-	(void)argc, (void)argv, (void)envp;
+	(void)argc;
 
-	while (read_parse_line(args, line))
+	isat = isatty(STDIN_FILENO);
+	while (ex)
 	{
-		pid = fork();
-		if (pid < 0)
+		ex = read_parse_line(args, line, isat);
+		finalpatharg = set_path(args, envp);
+		if (finalpatharg != NULL)
 		{
-			perror("FORK FAILED");
-			exit(1);
-		}
-		if (pid == 0)
-		{
-			ret = execvp(args[0], args);
-			if (ret != 0)
-				printerror(args);
+			pid = fork();
+			if (pid < 0)
+			{
+				perror("FORK FAILED");
+				exit(1);
+			}
+			if (pid == 0)
+			{
+				executepath(finalpatharg, args);
+			}
+			else
+			{
+				waitpid(pid, 0, 0);
+			}
 		}
 		else
-		{
-			waitpid(pid, 0, 0);
-		}
+			printerror(args, argv, isat);
 	}
 	return (0);
 }

@@ -9,15 +9,30 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <limits.h>
+#include <sys/stat.h>
 
+char *get_stat(char *pathargs[], char *args[]);
 
-void printerror(char **args);
+int set_stat(char arguments[]);
+
+char *set_path(char **args, char **envp);
+
+int executepath(char finalpatharg[], char *args[]);
+
+void concatpath(char temp[], char finaltemp[], char *args[]);
+
+void envstrtok(char finaltemp[], char *pathargs[]);
+
+void setpath(char temp[], char path[]);
+
+void printerror(char **args, char **argv, int isat);
 
 void printline(void);
 
-void read_line(char line[]);
+int read_line(char line[]);
 
-int read_parse_line(char *args[], char line[]);
+int read_parse_line(char *args[], char line[], int isat);
 
 void remove_endOfLine(char line[]);
 
