@@ -3,15 +3,24 @@
  * read_parse_line - prints line, read and delete '\n', parse line
  * @args: will contain all words
  * @line: will get line from command line
+ * @isat: tells us if we are in the shell or outside
  *
  * Return: int of fail or success
  */
-int read_parse_line(char *args[], char line[])
+int read_parse_line(char *args[], char line[], int isat)
 {
-	printline();
-	read_line(line);
-	process_line(args, line);
-	return (1);
+	int ret;
+
+	if (isat == 1)
+		printline();
+	ret = read_line(line);
+	if (ret > -1)
+	{
+		process_line(args, line);
+		return (1);
+	}
+	else
+		_exit(1);
 }
 
 /**
@@ -30,15 +39,25 @@ void printline(void)
  *
  * Return: void
  */
-void read_line(char line[])
+int read_line(char line[])
 {
 	ssize_t ret;
 	size_t size = 100;
 
-	ret = getline(&line, &size, stdin);
-	remove_endOfLine(line);
-	if (strcmp(line, "exit") == 0 || ret == -1)
-		exit(1);
+	while ((ret = getline(&line, &size, stdin)) != EOF)
+	{
+		if (ret > -1)
+		{
+			remove_endOfLine(line);
+			fflush(stdin);
+			if (strcmp(line, "exit") == 0)
+			{
+				_exit(1);
+			}
+			return (1);
+		}
+	}
+	return (ret);
 }
 
 /**
@@ -68,11 +87,6 @@ int process_line(char *args[], char line[])
 	int i = 0;
 
 	args[i] = strtok(line, " ");
-	if (args[i] == NULL)
-	{
-		printf("NO ARGS\n");
-		return (1);
-	}
 	while (args[i] != NULL)
 	{
 		i++;
