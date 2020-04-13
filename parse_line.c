@@ -50,10 +50,6 @@ int read_line(char line[])
 		{
 			remove_endOfLine(line);
 			fflush(stdin);
-			if (strcmp(line, "exit") == 0)
-			{
-				_exit(1);
-			}
 			return (1);
 		}
 	}
