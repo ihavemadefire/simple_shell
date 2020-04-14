@@ -41,6 +41,7 @@ int check_env(char **envp)
 {
 	int i = 0, j = 0;
 	char *buff;
+
 	while (envp[i])
 	{
 		j = _strlen(envp[i]);
