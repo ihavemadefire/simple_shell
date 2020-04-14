@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# test error when file doesnt exist
+echo "TEST 1: ERROR OUTPUT"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "qwerty" | /bin/sh
+echo -e "\e[92mGOT:\e[0m"
+echo "qwerty" | ./hsh
+echo "================="
+
+# test error when file doesnt exist
+echo "TEST 2: ERROR OUTPUT"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "qwerty" | /bin/../bin/sh
+echo -e "\e[92mGOT:\e[0m"
+echo "qwerty" | ./././hsh
+echo "================="
+
+# test ls command with sh and your shell
+echo "TEST 3: LS"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "ls" | /bin/sh
+echo -e "\e[92mGOT:\e[0m"
+echo "ls" | ./hsh
+echo "================="
+
+# test /bin/ls with sh and your shell
+echo "TEST 4: /BIN/LS"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "/bin/ls" | /bin/sh
+echo -e "\e[92mGOT:\e[0m"
+echo "/bin/ls" | ./hsh
+echo "================="
+
+# test /bin/ls with argument -l with sh and your shell
+echo "TEST 5: /BIN/LS -L"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "/bin/ls -l" | /bin/sh
+echo -e "\e[92mGOT:\e[0m"
+echo "/bin/ls -l" | ./hsh
+echo "================="
+
+# test ls with argument -l and path /tmp
+echo "TEST 6 PATH: LS -L /TMP"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "ls -l /tmp" | /bin/sh
+echo -e "\e[92mGOT:\e[0m"
+echo "ls -l /tmp" | ./hsh
+echo "================="
+
+# test exit command and prints exit status
+echo "TEST 7 EXIT"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "exit" | /bin/sh
+echo $?
+echo -e "\e[92mGOT:\e[0m"
+echo "exit" | ./hsh
+echo $?
+echo "================="
+
+# test exit with status 28 and prints exit status
+echo "TEST 8 EXIT STATUS: EXIT 28"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "exit 28" | /bin/sh
+echo $?
+echo -e "\e[92mGOT:\e[0m"
+echo "exit 28" | ./hsh
+echo $?
+echo "================="
+
+#test env command with sh and your shell
+echo "TEST 9 ENV"
+echo -e "\e[92mEXPECTED ENVIRONMENT:\e[0m"
+echo "env" | /bin/sh
+echo -e "\e[92mGOT ENVIRONMENT:\e[0m"
+echo "env" | ./hsh
+echo "================="
+
+#test alias command against your shell
+echo "TEST 10 ALIAS"
+echo -e "\e[92mEXPECTED:\e[0m"
+echo "alias"
+echo -e "\e[92mGOT:\e[0m"
+echo "alias" | ./hsh
+echo "================="

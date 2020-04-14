@@ -11,23 +11,26 @@ void printerror(char **args, char **argv, int isat)
 {
 	int i = 0;
 
-	if (isat == 1)
+	if (args[0])
 	{
-		while (args[i])
+		if (isat == 1)
 		{
-			printf("%s: ", args[i]);
-			i++;
+			while (args[i])
+			{
+				printf("%s: ", args[i]);
+				i++;
+			}
+			printf("No such file or directory\n");
 		}
-		printf("No such file or directory\n");
-	}
-	else
-	{
-		printf("%s: 1: ", argv[0]);
-		while (args[i])
+		else
 		{
-			printf("%s: ", args[i]);
-			i++;
+			printf("%s: 1: ", argv[0]);
+			while (args[i])
+			{
+				printf("%s: ", args[i]);
+				i++;
+			}
+			printf("not found\n");
 		}
-		printf("not found\n");
 	}
 }

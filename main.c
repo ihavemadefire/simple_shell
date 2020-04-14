@@ -11,16 +11,17 @@ int main(int argc, char **argv, char **envp)
 {
 	char *args[10], line[10], *finalpatharg;
 	pid_t pid;
-	int ex = 1, isat;
+	int ex = 1, isat, check;
 
 	(void)argc;
-
+	helper();
 	isat = isatty(STDIN_FILENO);
 	while (ex)
 	{
 		ex = read_parse_line(args, line, isat);
+		check = check_args(args, envp);
 		finalpatharg = set_path(args, envp);
-		if (finalpatharg != NULL)
+		if (finalpatharg && check)
 		{
 			pid = fork();
 			if (pid < 0)
@@ -38,7 +39,8 @@ int main(int argc, char **argv, char **envp)
 			}
 		}
 		else
-			printerror(args, argv, isat);
+			if (check)
+				printerror(args, argv, isat);
 	}
 	return (0);
 }

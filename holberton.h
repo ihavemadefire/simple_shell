@@ -13,6 +13,16 @@
 #include <sys/stat.h>
 
 
+int check_env(char *envp[]);
+
+void check_exit(char *temp);
+
+int check_args(char *args[], char *envp[]);
+
+void helper(void);
+
+void handler(int num);
+
 char *get_stat(char *pathargs[], char *args[]);
 
 int set_stat(char arguments[]);
