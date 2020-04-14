@@ -12,6 +12,7 @@
 #include <limits.h>
 #include <sys/stat.h>
 
+
 int check_env(char *envp[]);
 
 void check_exit(char *temp);
@@ -47,6 +48,7 @@ int read_parse_line(char *args[], char line[], int isat);
 void remove_endOfLine(char line[]);
 
 int process_line(char *args[], char line[]);
+
 
 
 #endif
