@@ -12,6 +12,8 @@
 #include <limits.h>
 #include <sys/stat.h>
 
+int _strcmp(char *s1, char *s2);
+
 int _strlen(char *s);
 
 int isNumericChar(char x);
