@@ -1,4 +1,4 @@
-#include "holberton.h"
+B#include "holberton.h"
 
 /**
  * _atoi -   converts an ascii string into an integer
@@ -75,10 +75,10 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- *_strlen - returns length of string
+ * _strlen - returns length of string
  *@s: passed pointer to be measured
  *
- *Return length of string
+ *Return: length of string
  */
 
 int _strlen(char *s)
