@@ -17,7 +17,7 @@ int check_args(char *args[], char *envp[])
 	{
 		while (array[i])
 		{
-			if (strcmp(temp, array[i]) == 0)
+			if (_strcmp(temp, array[i]) == 0)
 			{
 				if (i == 0)
 					check_exit(args[1]);
@@ -37,13 +37,17 @@ int check_args(char *args[], char *envp[])
  *
  * Return: int
  */
-int check_env(char *envp[])
+int check_env(char **envp)
 {
-	int i = 0;
+	int i = 0, j = 0;
+	char *buff;
 
 	while (envp[i])
 	{
-		printf("%s\n", envp[i]);
+		j = _strlen(envp[i]);
+		buff = envp[i];
+		write(STDOUT_FILENO, buff, j);
+		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
 	return (0);
@@ -60,7 +64,7 @@ void check_exit(char *temp)
 
 	if (temp)
 	{
-		i = atoi(temp);
+		i = _atoi(temp);
 		_exit(i);
 	}
 	_exit(0);

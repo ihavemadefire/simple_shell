@@ -12,6 +12,11 @@
 #include <limits.h>
 #include <sys/stat.h>
 
+int _strlen(char *s);
+
+int isNumericChar(char x);
+
+int _atoi(char *s);
 
 int check_env(char *envp[]);
 
