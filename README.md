@@ -18,7 +18,7 @@ This will compile the source code into an executable file named "shell".  It can
 ## Invocation and Usage :floppy_disk:
 Once installed and compiled, **Simple Shell** can be invoked either interactively or non-interactively.  
 
-###Interactively
+### Interactively
 To invoke **Simple Shell** interactively, call the shell executable at the command line as follows:
 
 `userPS1 $./shell`
@@ -34,7 +34,7 @@ To print the current environmental variables, call `env` while the shell is runn
 
 To exit, enter exit.  The user can supply a number after exit to indicate the exit status.  For example `exit 49` which could then be seen by calling echo $?
 
-###Non-Interactively
+### Non-Interactively
 To invoke **Simple Shell** non-interatively, echo a command and pipe it to the executable. For example:
 
 `userPS1 $ echo "ls -l" | ./shell`
