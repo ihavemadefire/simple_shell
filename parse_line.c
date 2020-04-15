@@ -20,7 +20,7 @@ int read_parse_line(char *args[], char line[], int isat)
 		return (1);
 	}
 	else
-		_exit(1);
+		_exit(0);
 }
 
 /**
