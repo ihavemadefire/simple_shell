@@ -14,7 +14,7 @@ To install **Simple Shell** clone this repository into your local file directory
 This will compile the source code into an executable file named "shell".
 
 ## Invocation and Usage :computer:
-Once installed and compiled, **Simple Shell** can be invoked either interactively or non-interactively.  
+Once installed and compiled, **Simple Shell** can be invoked either interactively or non-interactively.
 
 ### Interactively
 To invoke **Simple Shell** interactively, call the shell executable at the command line as follows:

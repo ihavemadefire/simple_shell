@@ -19,7 +19,7 @@ void printerror(char **args, char **argv, int isat)
 			while (args[i])
 			{
 				_ptstr(args[i]);
-				write(STDOUT_FILENO, "\n", 1);
+				write(STDOUT_FILENO, ": ", 2);
 				i++;
 			}
 			buff = "No such file or directory\n";
