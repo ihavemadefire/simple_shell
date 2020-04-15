@@ -42,7 +42,7 @@ void printline(void)
 int read_line(char line[])
 {
 	ssize_t ret;
-	size_t size = 100;
+	size_t size = 300;
 
 	while ((ret = getline(&line, &size, stdin)) != EOF)
 	{

@@ -12,6 +12,10 @@
 #include <limits.h>
 #include <sys/stat.h>
 
+char *intostr(int times);
+
+char *create_argv(char *argv[]);
+
 void _ptstr(char *s);
 
 int _strcmp(char *s1, char *s2);
@@ -46,7 +50,7 @@ void envstrtok(char finaltemp[], char *pathargs[]);
 
 void setpath(char temp[], char path[]);
 
-void printerror(char **args, char **argv, int isat);
+void printerror(char **args, char **argv, int times, int isat);
 
 void printline(void);
 
