@@ -1,20 +1,43 @@
-.TH Shell 1  "4-7-2020" "Holberton School" "Simple_Shell"
+.TH SimpleShell 1  "4-7-2020" "Holberton School" "Simple_Shell"
 
 .SH NAME
-.B shell\fR - simple shell
+.B Simple Shell\fR - Simple Shell
 
 .SH SYNOPSIS
-.B shell\fR
+.B Simple Shell\fR
 
 .SH DESCRIPTION
-.B Shell\fR is a simple UNIX command interpreter that reads commands and executes them.
-.SS Overview
-.SS Invocation
+.B Simple Shell\fR is a simple UNIX command interpreter that reads and executes user-supplied commands.
+.SS \fIOverview\fR
+.B Simple Shell\fR accepts and executes user supplied commands.  After receiving the command, \fBSimple Shell\fR parses the line to isolate the command call from any supplied arguments.  Once parsed, \fBSimple Shell\fR searches for the env or exit built-ins and executes if found. After serching built-ins, Simple Shell searches the PATH environmental variable, and executes the first file whose name matches the command.  If no match is found, Simple Shell will print "[command]: Command not found".
+.SS \fIInvocation\fR
+
+.B Simple Shell\fR can be invoked either \fIinteractively\fR or \fInon-interactively\fR.
+
+To invoke \fBSimple Shell\fR \fIinteractively\fR, call the executable at the command line as follows.
+
+   ./hsh
+
+Once invoked, the program will continue to display a prompt, accept, and execute commands until exit is called or the sesion is terminated.
+
+To invoke \fBSimple Shell\fR non-interactively, call echo "[command]" | ./hsh at the command line.  For example
+
+echo "ls -l" | ./hsh
+
+.SS \fIBUILT-INS\fR
+
+.B - \fIexit [status]\fR - Causes the program to terminate. If a number is supplied, it will be the exit status of the program upon termination.
+
+.B - \fIenv\fR - Prints the current environmental variables.
 
 .SH SEE ALSO
-access(2), chdir(2), execve(2), _exit(2), exit(3), fflush(3), fork(2), free(3), isatty(3), getcwd(3), malloc(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
+access(2), execve(2), _exit(2), exit(3), fork(2), isatty(3), getcwd(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
 
-.B Shell\fR recreates basic functionality of the \fBsh\fR shell.
+.B Simple Shell\fR recreates basic functionality of the \fBsh\fR shell.
+
+.SH BUG REPORTING
+
+Please don't.  We're very tired.
 
 .SH AUTHOR
 Gunter Pearson and Jacob Ide
