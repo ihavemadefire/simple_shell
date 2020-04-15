@@ -10,6 +10,7 @@
 void printerror(char **args, char **argv, int isat)
 {
 	int i = 0;
+	char *buff;
 
 	if (args[0])
 	{
@@ -17,20 +18,27 @@ void printerror(char **args, char **argv, int isat)
 		{
 			while (args[i])
 			{
-				printf("%s: ", args[i]);
+				_ptstr(args[i]);
+				write(STDOUT_FILENO, "\n", 1);
 				i++;
 			}
-			printf("No such file or directory\n");
+			buff = "No such file or directory\n";
+			_ptstr(buff);
 		}
 		else
 		{
-			printf("%s: 1: ", argv[0]);
+			_ptstr(argv[0]);
+			buff = ": 1: ";
+			_ptstr(buff);
 			while (args[i])
 			{
-				printf("%s: ", args[i]);
+				_ptstr(args[i]);
+				buff = ": ";
+				_ptstr(buff);
 				i++;
 			}
-			printf("not found\n");
+			buff = "not found\n";
+			_ptstr(buff);
 		}
 	}
 }

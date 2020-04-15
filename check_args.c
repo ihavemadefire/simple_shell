@@ -44,9 +44,7 @@ int check_env(char **envp)
 
 	while (envp[i])
 	{
-		j = _strlen(envp[i]);
-		buff = envp[i];
-		write(STDOUT_FILENO, buff, j);
+		_ptstr(envp[i]);
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}

@@ -90,3 +90,18 @@ int _strlen(char *s)
 
 	return (i);
 }
+
+/**
+ * _ptstr - returns length of string
+ *@s: passed pointer to be printed
+ *
+ */
+void _ptstr(char *s)
+{
+	int j;
+	char *buff;
+
+	j = _strlen(s);
+	buff = s;
+	write(STDOUT_FILENO, buff, j);
+}

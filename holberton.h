@@ -12,6 +12,8 @@
 #include <limits.h>
 #include <sys/stat.h>
 
+void _ptstr(char *s);
+
 int _strcmp(char *s1, char *s2);
 
 int _strlen(char *s);
