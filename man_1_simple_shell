@@ -9,7 +9,7 @@
 .SH DESCRIPTION
 .B Simple Shell\fR is a simple UNIX command interpreter that reads and executes user-supplied commands.
 .SS \fIOverview\fR
-.B Simple Shell\fR accepts and executes user supplied commands.  After receiving the command, \fBSimple Shell\fR parses the line to isolate the command call from any supplied arguments.  Once parsed, \fBSimple Shell\fR searches for the env or exit built-ins and executes if found. After serching built-ins, Simple Shell searches the PATH environmental variable, and executes the first file whose name matches the command.  If no match is found, Simple Shell will print "[command]: Command not found".
+.B Simple Shell\fR accepts and executes user supplied commands.  After receiving the command, \fBSimple Shell\fR parses the line to isolate the command call from any supplied arguments.  Once parsed, \fBSimple Shell\fR searches for the env or exit built-ins and executes if found. After searching built-ins, Simple Shell searches the PATH environmental variable, and executes the first file whose name matches the command.  If no match is found, Simple Shell will print "[command]: Command not found".
 .SS \fIInvocation\fR
 
 .B Simple Shell\fR can be invoked either \fIinteractively\fR or \fInon-interactively\fR.
@@ -18,7 +18,7 @@ To invoke \fBSimple Shell\fR \fIinteractively\fR, call the executable at the com
 
    ./hsh
 
-Once invoked, the program will continue to display a prompt, accept, and execute commands until exit is called or the sesion is terminated.
+Once invoked, the program will continue to display a prompt, accept, and execute commands until exit is called or the session is terminated.
 
 To invoke \fBSimple Shell\fR non-interactively, call echo "[command]" | ./hsh at the command line.  For example
 
