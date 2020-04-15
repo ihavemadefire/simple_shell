@@ -39,8 +39,7 @@ int check_args(char *args[], char *envp[])
  */
 int check_env(char **envp)
 {
-	int i = 0, j = 0;
-	char *buff;
+	int i = 0;
 
 	while (envp[i])
 	{
