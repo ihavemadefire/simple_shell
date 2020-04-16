@@ -18,7 +18,6 @@ void printerror(char **args, char **argv, int times, int isat)
 			buff = create_argv(argv);
 		else
 			buff = (argv[0]);
-		_ptstr("./");
 		_ptstr(buff);
 		_ptstr(": ");
 		buff = intostr(times);
