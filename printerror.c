@@ -2,22 +2,18 @@
 /**
  * printerror - prints errors
  * @args: arguments from command line
- * @argv: used for command typed in outside shell
+ * @av: used for command typed in outside shell
  * @times: contains amount of times shell is used
- * @isat: tells us whether we are inside or outside the shell
  *
  * Return: void
  */
-void printerror(char **args, char **argv, int times, int isat)
+void printerror(char **args, char **av, int times)
 {
 	char *buff;
 
 	if (args[0])
 	{
-		if (isat == 1)
-			buff = create_argv(argv);
-		else
-			buff = (argv[0]);
+		buff = create_argv(av);
 		_ptstr(buff);
 		_ptstr(": ");
 		buff = intostr(times);
@@ -81,10 +77,13 @@ char *intostr(int times)
  */
 char *create_argv(char *argv[])
 {
-	int i = 2, j = 0;
+	int i = 0, j = 0;
 	char buff[20];
 	char *ret;
 
+	while (argv[0][i] != '/')
+		i++;
+	i++;
 	while (argv[0][i])
 	{
 		buff[j] = argv[0][i];
