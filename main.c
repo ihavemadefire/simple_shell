@@ -11,42 +11,37 @@ int main(int argc, char **argv, char **envp)
 {
 	char *args[10], line[10], *finalpatharg;
 	pid_t pid;
-	int ex = 1, isat, check, times = 0, status, ex_status;
+	int ex = 1, isat, check, times = 0;
 
 	(void)argc;
-	helper(), isat = isatty(STDIN_FILENO);
+	helper();
+	isat = isatty(STDIN_FILENO);
 	while (ex)
 	{
-		times++, ex = read_parse_line(args, line, isat);
-		if (ex != 2)
-		{
-			check = check_args(args, envp);
-			finalpatharg = set_path(args, envp);
-		}
-		if (finalpatharg && check && ex == 1)
+		ex = read_parse_line(args, line, isat);
+		check = check_args(args, envp);
+		finalpatharg = set_path(args, envp);
+		if (finalpatharg && check)
 		{
 			pid = fork();
 			if (pid < 0)
 			{
-				perror("FORK FAILED"), exit(1);
+				perror("FORK FAILED");
+				exit(1);
 			}
 			if (pid == 0)
 			{
 				executepath(finalpatharg, args);
+				exit(0);
 			}
 			else
 			{
-				waitpid(pid, &status, 0);
-				if (WIFEXITED(status))
-					ex_status = WEXITSTATUS(status);
+				waitpid(pid, 0, 0);
 			}
 		}
 		else
-		{
-			exit_func(ex, ex_status, finalpatharg);
 			if (check)
-				printerror(args, argv, times);
-		}
+				printerror(args, argv, times, isat);
 	}
-	return (0);
+	return(0);
 }
