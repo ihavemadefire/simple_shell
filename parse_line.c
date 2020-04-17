@@ -10,23 +10,17 @@
 int read_parse_line(char *args[], char line[], int isat)
 {
 	int ret;
-	int check;
 
 	if (isat == 1)
 		printline();
 	ret = read_line(line);
 	if (ret > -1)
 	{
-		check = check_line_space(line);
-		if (check)
-			return (2);
 		process_line(args, line);
 		return (1);
 	}
-	if (isat == 0)
-		return (0);
 	else
-		return (1);
+		_exit(0);
 }
 
 /**
@@ -84,7 +78,7 @@ void remove_endOfLine(char line[])
  *
  * Return: int for success or failure
  */
-void process_line(char *args[], char line[])
+int process_line(char *args[], char line[])
 {
 	int i = 0;
 
@@ -94,4 +88,5 @@ void process_line(char *args[], char line[])
 		i++;
 		args[i] = strtok(NULL, " ");
 	}
+	return(1);
 }

@@ -12,9 +12,6 @@
 #include <limits.h>
 #include <sys/stat.h>
 
-void exit_func(int ex, int ex_status, char *finalpatharg);
-
-int check_line_space(char *line);
 
 char *intostr(int times);
 
@@ -54,7 +51,7 @@ void envstrtok(char finaltemp[], char *pathargs[]);
 
 void setpath(char temp[], char path[]);
 
-void printerror(char **args, char **av, int time);
+void printerror(char **args, char **av, int times, int isat);
 
 void printline(void);
 
@@ -64,7 +61,7 @@ int read_parse_line(char *args[], char line[], int isat);
 
 void remove_endOfLine(char line[]);
 
-void process_line(char *args[], char line[]);
+int process_line(char *args[], char line[]);
 
 
 

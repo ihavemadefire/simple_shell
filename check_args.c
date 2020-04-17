@@ -66,26 +66,3 @@ void check_exit(char *temp)
 	}
 	_exit(0);
 }
-
-/**
- * check_line_space - checks line for all spaces
- * @line: contains everything from getline
- *
- * Return: int on success or failure
- */
-int check_line_space(char *line)
-{
-	int i = 0, j = 0;
-	char space = ' ';
-	int len = _strlen(line);
-
-	while (line[j])
-	{
-		if (line[j] == space)
-			i++;
-		j++;
-	}
-	if (i == len)
-		return (1);
-	return (0);
-}
