@@ -43,5 +43,5 @@ int main(int argc, char **argv, char **envp)
 			if (check)
 				printerror(args, argv, times, isat);
 	}
-	return(0);
+	return (0);
 }

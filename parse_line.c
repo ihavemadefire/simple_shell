@@ -88,5 +88,5 @@ int process_line(char *args[], char line[])
 		i++;
 		args[i] = strtok(NULL, " ");
 	}
-	return(1);
+	return (1);
 }
